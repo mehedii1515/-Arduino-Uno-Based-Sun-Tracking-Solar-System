@@ -1,78 +1,62 @@
-Arduino Uno Based Sun Tracking Solar System
-This project presents an innovative approach to enhance solar energy harvesting efficiency by implementing a sun-tracking mechanism using an Arduino Uno. By dynamically aligning solar panels with the sun's trajectory, the system maximizes energy yield throughout the day.
+# Arduino Uno Based Sun Tracking Solar System
 
-Project Overview
-The Arduino Uno Based Sun Tracking Solar System optimizes solar panel orientation to ensure they continuously face the sun for maximum exposure. It integrates light sensors and servo motors to detect sunlight direction and control panel positioning in real-time. This provides a cost-effective solution for sustainable energy, particularly in locations with varying sunlight angles.
+An innovative approach to enhancing solar energy harvesting efficiency by implementing a sun-tracking mechanism using an Arduino Uno microcontroller. This system ensures solar panels continuously face the sun for maximum exposure, significantly increasing energy yield compared to stationary setups.
 
-Key Features
+---
 
-Dynamic Alignment: Automatically aligns panels with the sun's trajectory to optimize efficiency.
+## Project Overview
 
+The core objective of this project is to optimize solar panel orientation in real-time. By integrating light sensors and a servo motor, the system detects the direction of the strongest sunlight and adjusts the panel positioning accordingly. 
 
-Real-time Processing: Uses the Arduino Uno’s computational power for precise motor control based on sensor inputs.
+### Key Features
+* **Dynamic Tracking**: Automatically aligns panels with the sun's trajectory throughout the day.
+* **Precise Control**: Utilizes the Arduino Uno for real-time data processing and motor adjustment.
+* **Cost-Effective**: Built using accessible components like LDRs and a standard SG90 servo motor.
+* **Sustainable Design**: Focuses on maximizing renewable energy efficiency.
 
+---
 
-Increased Energy Yield: Extends the window of use and increases output even in variable weather.
+## Equipment & Components
 
+### Hardware
+* **Microcontroller**: Arduino Uno R3
+* **Solar Panels**: 5V 1 Watt (3 units connected in series)
+* **Sensors**: 2x LDR (Light Dependent Resistors)
+* **Actuator**: Mini Servo Motor SG90
+* **Power Management**:
+    * TP4056 LiPo Battery Charger Module
+    * 3.7V 18650 Battery Cell
+    * 1~5V to 5V Step-Up Boost Module
+* **Other**: 100k Resistors, Power Switch, 5mm Wood Panel (60x60cm frame)
 
-IoT & Renewable Integration: Showcases the potential of combining electronics with renewable energy systems.
+### Tools Used
+* Soldering Iron & Lead
+* Glue Gun
+* Wood/Wire Cutters
 
-Equipment (Parts & Tools)
-Components
+---
 
-Microcontroller: Arduino Uno R3.
-
-
-Solar Panels: 5V 1 Watt (3 pcs).
-
-
-Sensors: LDR Sensors (2 pcs).
-
-
-Actuator: Mini Servo Motor SG90.
-
-Power Management:
-
-LiPo Battery Charger Module TP4056.
-
-3.7V Battery Cell (Model 18650).
-
-USB DC 1~5V to DC 5V Step Up Boost Module.
-
-
-Other: 100k Resistors, Power Switch, Jumper Wires, and 5mm Wood Panel.
-
-How It Works
-
-Light Sensing: Two LDR sensors are placed on the horizontal sides of the solar panel.
+## How It Works
 
 
-Comparison: The Arduino reads the analog values from both sensors, LDR1 and LDR2.
 
+1. **Detection**: Two LDR sensors are mounted on the horizontal sides of the solar panel.
+2. **Logic**: The Arduino compares the light values from both sensors. A "tolerance" variable is used to prevent the motor from jittering when light levels are nearly equal.
+3. **Movement**: If one side receives more light, the Arduino signals the servo motor to rotate the panel in that direction (East or West).
+4. **Safety**: The code includes limits to ensure the motor stays within a 0–180 degree range.
 
-Tolerance: A set tolerance of 20 prevents constant, jittery motion if the light values are nearly identical.
+---
 
+## Implementation Procedure
 
-Movement: If one sensor detects more light than the other, the Arduino signals the servo motor to rotate the panel eastward or westward.
+1. **Structural Build**: Construct a 60x60 cm frame with a custom stand to allow for horizontal movement.
+2. **Power Setup**: Solder the solar panels in series. Connect them to the TP4056 charger and the 18650 battery. 
+3. **Voltage Regulation**: Connect the Step-Up Boost module to provide a steady 5V to the Arduino from the battery.
+4. **Wiring**: Connect LDRs with 100k resistors to the analog pins and ground. Attach the servo signal wire to digital pin 2.
+5. **Firmware**: Upload the tracking logic to the Arduino via the IDE.
 
+---
 
-Limits: The system is programmed to stay within a 0 to 180-degree range to prevent mechanical overextension.
+## Conclusion
 
-Installation & Procedure
-
-Framework: Cut a 60x60 cm wood panel and build a custom stand for horizontal movement.
-
-
-Solar Connection: Solder the three solar panels in series to achieve a 5V 3-Watt supply.
-
-
-Power Circuit: Connect the panels to the TP4056 charger and the 3.7V battery. Use the Step-Up Boost module to power the Arduino's 5V and GND ports.
-
-
-Wiring: Attach LDRs with 100k resistors to the GND and 5V pins.
-
-
-Code: Upload the source code to the Arduino Uno R3 to enable full tracking functionality.
-
-Conclusion
-This project demonstrates the potential of accessible automation in renewable energy. By utilizing innovative technology, we can build a greener, more efficient future for solar harvesting.
+This project showcases the potential of combining IoT technology with renewable energy. It provides a scalable, accessible solution for improving solar efficiency in residential or small-scale industrial applications.
